@@ -4,26 +4,6 @@
 #include <fstream>
 #include <stdio.h>
 
-/*
-*  Done:
-*   Set and get current color of the console text
-*   Print success and failure
-*   Clear Console
-*   Loading box (Kinda?)
-*   Set Title  
-*   Simple Attach Console Function
-*   Colored Output
-*   Get Console Size
-*   Read a line from console output
-* 
-*  TODO:
-*   Output console output to file (not sure how useful this would be)
-*   
-*  Maybe:
-*   Gui system
-* 
-*/
-
 // outputs data to file
 void cMisc::v_outFile(const char* file, const char* data)
 {
