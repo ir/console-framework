@@ -4,7 +4,6 @@
 #include <thread>
 #include <future>
 
-
 namespace cRead
 {
     COORD GetConsoleCursorPosition(HANDLE hConsoleOutput);
