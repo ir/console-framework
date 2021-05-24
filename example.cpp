@@ -1,7 +1,23 @@
 // ConsoleOutput.cpp : This file contains the 'main' function. 
+
 /*
+*  Done:
+*   Set and get current color of the console text
+*   Print success and failure
+*   Clear Console
+*   Loading box
+*   Set Title  
+*   Simple Attach Console Function
+*   Colored Output
+*   Get Console Size
+*   Read a line from console output
+*   Debug output (to console & to file)
+*   
+*   WIP/Maybe:
+*       Gui system
 * 
 */
+
 #include <iostream>
 #include "cFramework.h"
 #include "enums.h"
