@@ -5,45 +5,6 @@
 #include <iostream>
 #include "cFramework.h"
 #include "enums.h"
-#include <time.h>
-#include "cgui.h"
-
-bool running = false;
-
-void console_title(Console console) // retarded animation 
-{
-    std::string name_arr = { "" };
-    std::string name_anim = { "-koohlisarb" }; // 11
-    double l = (((console.r_getSize()[0] / 3) - (179 / 3)) / 1.8);
-    for (int i = 0; i < l; i++)
-        name_arr.append("-");
-    int counter = 0;
-    int orig = 0;
-    int lala = orig;
-    while (running)
-    {
-        console.v_setTitle(name_arr);
-        name_arr[lala] = name_anim[(name_anim.length() - counter) - 1];
-        if (orig == name_arr.length() - 11)
-            orig = 0;
-            
-        if ((name_anim.length() - counter) - 1 <= 0) // https://tenor.com/view/troll-pilled-gif-19289988
-        {
-            
-            name_arr[orig] = '-';
-            counter = 0;
-            orig++;
-            lala = orig;
-            Sleep(1000);
-        }
-        else
-        {
-            counter++;
-            lala++;
-            Sleep(250);
-        }
-    }
-}
 
 int readKey()
 {
@@ -67,14 +28,11 @@ int main()
 
     console.v_printLoad(1); // printing loading box, arg is the amount of rotations
 
-    console.v_colOut(" LOADING DONE\n", DarkGreen);
+    console.v_colOut(" LOADING DONE\n", DarkGreen); // prints colored text
 
-    //console.v_setTitle("LOADING DONE"); // setting the title
+    console.v_setTitle("LOADING DONE"); // setting the title
 
     console.v_colOut("New Color\n", White); 
-
-    running = true;
-    std::thread t1(console_title, console);
     
     std::cout << "Original Color\n";
     
@@ -84,9 +42,7 @@ int main()
     cMisc::v_outFile("Text.txt", "This is a test\nThis is another line of text");
 
     console.v_debugCout("This is a debug message\n");
-
     
-        
     while (!GetAsyncKeyState(VK_ESCAPE) & 1)
     {
         int key = readKey();
@@ -105,29 +61,11 @@ int main()
         case VK_F9: 
             console.v_clearConsole(); break;
         }
-        
-        /*if (GetAsyncKeyState(VK_F4) & 1)
-            console.v_readLine(hConsole);
-            
-        if (GetAsyncKeyState(VK_F5) & 1)
-            std::cout << "Hello\n";
-
-        if (GetAsyncKeyState(VK_F6) & 1)
-            std::cout << "This is a random string\n";
-
-        if (GetAsyncKeyState(VK_F7) & 1)
-            std::cout << "This is a string with multiple spaces\n";
-
-        if (GetAsyncKeyState(VK_F8) & 1)
-            console.b_attachConsole();*/
-            
+  
     }
-    console.v_setColor(hConsole, White); // setting color back to white
-    running = false;
-    t1.detach();
-    FreeConsole();
-    PostMessageA(GetConsoleWindow(), WM_CLOSE, 0, 0);
     
+    console.v_setColor(hConsole, White); 
+    FreeConsole();
     return 0;
 }
 
